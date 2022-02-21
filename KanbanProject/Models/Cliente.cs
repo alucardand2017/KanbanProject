@@ -23,7 +23,24 @@ namespace KanbanProject.Models
             int count = 1;
             foreach (var item in Projetos)
             { 
-                System.Console.WriteLine($"Projeto {count}" +item.NomeProjeto);
+                System.Console.WriteLine($"Projeto  {count}: " +item.NomeProjeto);
+                System.Console.WriteLine($"Descrição : " + item.Descricao);
+                System.Console.WriteLine($"Data inicio : " + item.DataInicio);
+                System.Console.WriteLine($"Data Final : " + item.DataFim);
+                System.Console.WriteLine($"Responsável : " + item.DonoProduto);
+                foreach (var item1 in item.Historias)
+                {
+                    System.Console.WriteLine($"Historia : " + item1.NomeHistoria);
+                    System.Console.WriteLine($"Posicão : " + item1.Posicao);
+                    System.Console.WriteLine($"Peso : " + item1.Peso);
+                }
+                foreach (var item1 in item.Tarefas)
+                {
+                    System.Console.WriteLine($"Tarefa : " + item1.NomeTarefa);
+                    System.Console.WriteLine($"Posicão : " + item1.Posicao);
+                    System.Console.WriteLine($"Peso : " + item1.Peso + "\n");
+
+                }
                 count++;
             }
         }

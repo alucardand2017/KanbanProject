@@ -14,12 +14,16 @@ namespace KanbanProject
             try
             {
                 List<Cliente> clientes = new List<Cliente>();
-                List<Funcionario> funcionarios = new List<Funcionario>();
-                ClienteService.CadastrarCliente(clientes);
-                ProjetoServices.CadastrarProjeto(clientes[0]);
-                HistoriaService.CadastrarHistoria(clientes[0].Projetos[0]);
-                TarefaService.CadastrarTarefa(clientes[0].Projetos[0]);
-                Salvar.Caminho(clientes[0]);
+                Cliente cliente = new Cliente();
+                //List<Funcionario> funcionarios = new List<Funcionario>();
+                //ClienteService.CadastrarCliente(clientes);
+                //ProjetoServices.CadastrarProjeto(clientes[0]);
+                //HistoriaService.CadastrarHistoria(clientes[0].Projetos[0]);
+                //TarefaService.CadastrarTarefa(clientes[0].Projetos[0]);
+                //Salvar.Caminho(clientes[0]);
+                cliente = Carregar.CaminhoCarregar();
+                Console.WriteLine(cliente);
+                cliente.PrintProjetos();
             }
             catch (Exception e)
             {

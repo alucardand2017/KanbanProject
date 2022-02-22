@@ -1,4 +1,5 @@
 ﻿using System;
+using KanbanProject.Views.Shared;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

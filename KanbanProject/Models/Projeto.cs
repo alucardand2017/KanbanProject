@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using KanbanProject.Models.Enums;
-using KanbanProject.Models;
-using System.ComponentModel.DataAnnotations;
+using KanbanProject.Views.Shared;
 using System;
 
 namespace KanbanProject.Models
@@ -29,24 +27,29 @@ namespace KanbanProject.Models
         public void PrintProjeto()
         {
             int count = 1;
-
+            ConsoleColor cor = Painel.TextoDigitacao();
             System.Console.WriteLine($"Projeto  {count}: " + NomeProjeto);
             System.Console.WriteLine($"Descrição : " + Descricao);
             System.Console.WriteLine($"Data inicio : " + DataInicio);
             System.Console.WriteLine($"Data Final : " + DataFim);
-            System.Console.WriteLine($"Responsável : " + DonoProduto);
+            System.Console.WriteLine($"Responsável : " + DonoProduto + "\n");
+            Painel.RetornaCorAnterior(cor);
+            cor = Painel.TextoDestaque();
             foreach (var item1 in Historias)
             {
-                System.Console.WriteLine($"Historia : " + item1.NomeHistoria);
-                System.Console.WriteLine($"Posicão : " + item1.Posicao);
-                System.Console.WriteLine($"Peso : " + item1.Peso);
+                System.Console.Write($"Historia : " + item1.NomeHistoria +"\t");
+                System.Console.Write($"Posicão : " + item1.Posicao + "\t");
+                System.Console.Write($"Peso : " + item1.Peso + "\n");
             }
+            Painel.RetornaCorAnterior(cor);
+            cor = Painel.TextoErro();
             foreach (var item1 in Tarefas)
             {
-                System.Console.WriteLine($"Tarefa : " + item1.NomeTarefa);
-                System.Console.WriteLine($"Posicão : " + item1.Posicao);
-                System.Console.WriteLine($"Peso : " + item1.Peso + "\n");
+                System.Console.Write($"Tarefa : " + item1.NomeTarefa + "\t");
+                System.Console.Write($"Posicão : " + item1.Posicao + "\t");
+                System.Console.Write($"Peso : " + item1.Peso + "\n");
             }
+            Painel.RetornaCorAnterior(cor);
             count++;
         }
     }

@@ -13,7 +13,7 @@ namespace KanbanProject
         {
             try
             {
-                List<Cliente> clientes = new List<Cliente>();
+                //List<Cliente> clientes = new List<Cliente>();
                 Cliente cliente = new Cliente();
                 //List<Funcionario> funcionarios = new List<Funcionario>();
                 //ClienteService.CadastrarCliente(clientes);
@@ -22,8 +22,9 @@ namespace KanbanProject
                 //TarefaService.CadastrarTarefa(clientes[0].Projetos[0]);
                 //Salvar.Caminho(clientes[0]);
                 cliente = Carregar.CaminhoCarregar();
-                Console.WriteLine(cliente);
-                cliente.PrintProjetos();
+                //Console.WriteLine(cliente);
+                //cliente.PrintProjetos();
+                ProjetoServices.PesquisarProjeto(cliente);
             }
             catch (Exception e)
             {

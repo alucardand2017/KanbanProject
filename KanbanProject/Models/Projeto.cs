@@ -26,20 +26,29 @@ namespace KanbanProject.Models
             DataFim = dataFim;
             DonoProduto = donoProduto;
         }
-        public override string ToString()
+        public void PrintProjeto()
         {
-            return
-                "\nNome: " +
-                NomeProjeto +                
-                "Descricao:" +
-                Descricao +
-                "\n" +
-                "Data Inicio: " +
-                DataInicio +
-                 "Data final: " +
-                DataFim +
-                "\n";    
+            int count = 1;
+
+            System.Console.WriteLine($"Projeto  {count}: " + NomeProjeto);
+            System.Console.WriteLine($"Descrição : " + Descricao);
+            System.Console.WriteLine($"Data inicio : " + DataInicio);
+            System.Console.WriteLine($"Data Final : " + DataFim);
+            System.Console.WriteLine($"Responsável : " + DonoProduto);
+            foreach (var item1 in Historias)
+            {
+                System.Console.WriteLine($"Historia : " + item1.NomeHistoria);
+                System.Console.WriteLine($"Posicão : " + item1.Posicao);
+                System.Console.WriteLine($"Peso : " + item1.Peso);
+            }
+            foreach (var item1 in Tarefas)
+            {
+                System.Console.WriteLine($"Tarefa : " + item1.NomeTarefa);
+                System.Console.WriteLine($"Posicão : " + item1.Posicao);
+                System.Console.WriteLine($"Peso : " + item1.Peso + "\n");
+            }
+            count++;
         }
     }
-
 }
+   

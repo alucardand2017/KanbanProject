@@ -26,15 +26,14 @@ namespace KanbanProject.Models
         }
         public void PrintProjeto()
         {
-            int count = 1;
-            ConsoleColor cor = Painel.TextoDigitacao();
-            System.Console.WriteLine($"Projeto  {count}: " + NomeProjeto);
+            ConsoleColor cor = Painel.TextoDestaque();
+            System.Console.WriteLine($"\nProjeto : " + NomeProjeto);
             System.Console.WriteLine($"Descrição : " + Descricao);
             System.Console.WriteLine($"Data inicio : " + DataInicio);
             System.Console.WriteLine($"Data Final : " + DataFim);
-            System.Console.WriteLine($"Responsável : " + DonoProduto + "\n");
+            System.Console.WriteLine($"Responsável : " + DonoProduto);
             Painel.RetornaCorAnterior(cor);
-            cor = Painel.TextoDestaque();
+            cor = Painel.TextoDigitacao();
             foreach (var item1 in Historias)
             {
                 System.Console.Write($"Historia : " + item1.NomeHistoria +"\t");
@@ -42,7 +41,7 @@ namespace KanbanProject.Models
                 System.Console.Write($"Peso : " + item1.Peso + "\n");
             }
             Painel.RetornaCorAnterior(cor);
-            cor = Painel.TextoErro();
+            cor = Painel.TextoDigitacao();
             foreach (var item1 in Tarefas)
             {
                 System.Console.Write($"Tarefa : " + item1.NomeTarefa + "\t");
@@ -50,7 +49,6 @@ namespace KanbanProject.Models
                 System.Console.Write($"Peso : " + item1.Peso + "\n");
             }
             Painel.RetornaCorAnterior(cor);
-            count++;
         }
     }
 }

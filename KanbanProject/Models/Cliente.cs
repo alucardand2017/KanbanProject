@@ -39,7 +39,6 @@ namespace KanbanProject.Models
                     System.Console.WriteLine($"Tarefa : " + item1.NomeTarefa);
                     System.Console.WriteLine($"Posicão : " + item1.Posicao);
                     System.Console.WriteLine($"Peso : " + item1.Peso + "\n");
-
                 }
                 count++;
             }
@@ -54,8 +53,7 @@ namespace KanbanProject.Models
                 Endereco +
                 "\n" +
                 "Telefone: " +
-                Telefone; 
-           
+                Telefone;
         }
     }
 }

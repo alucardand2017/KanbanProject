@@ -26,7 +26,7 @@ namespace KanbanProject.Models.Services
         }
         public static void RemoverProjeto(Cliente cliente)
         {
-            ConsoleColor cor = Painel.TextoDestaque();
+            ConsoleColor cor = Painel.TextoAmarelo();
             int resp = PesquisarGeralProjeto(cliente);
             cliente.Projetos[resp - 1].PrintProjeto();
             Console.WriteLine("Deseja realmente deletar esse projeto?");
@@ -34,7 +34,7 @@ namespace KanbanProject.Models.Services
             if (del == 's')
             {
                 cliente.Projetos.Remove(cliente.Projetos[resp - 1]);
-                Painel.TextoErro();
+                Painel.TextoVermelhoPerigo();
                 Console.WriteLine("Projeto Removido com sucesso!");
                 Painel.RetornaCorAnterior(cor);
             }
@@ -45,7 +45,6 @@ namespace KanbanProject.Models.Services
         {
             throw new NotImplementedException("ainda não implementado!");
         }
-
     }
 }
 

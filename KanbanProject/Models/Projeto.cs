@@ -26,29 +26,73 @@ namespace KanbanProject.Models
         }
         public void PrintProjeto()
         {
-            ConsoleColor cor = Painel.TextoDestaque();
+            ConsoleColor cor = Painel.TextoAmarelo();
             System.Console.WriteLine($"\nProjeto : " + NomeProjeto);
             System.Console.WriteLine($"Descrição : " + Descricao);
             System.Console.WriteLine($"Data inicio : " + DataInicio);
             System.Console.WriteLine($"Data Final : " + DataFim);
             System.Console.WriteLine($"Responsável : " + DonoProduto);
             Painel.RetornaCorAnterior(cor);
-            cor = Painel.TextoDigitacao();
             foreach (var item1 in Historias)
             {
-                System.Console.Write($"Historia : " + item1.NomeHistoria +"\t");
-                System.Console.Write($"Posicão : " + item1.Posicao + "\t");
-                System.Console.Write($"Peso : " + item1.Peso + "\n");
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Historia : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoAmareloEscuro();
+                Console.Write(item1.NomeHistoria + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Descricao : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoAmareloEscuro();
+                System.Console.WriteLine(item1.Descricao + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Posicao : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoAmareloEscuro();
+                System.Console.Write(item1.Posicao + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Peso : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoAmareloEscuro();
+                System.Console.Write(item1.Peso + "\t");
+                Painel.RetornaCorAnterior(cor);
             }
-            Painel.RetornaCorAnterior(cor);
-            cor = Painel.TextoDigitacao();
             foreach (var item1 in Tarefas)
             {
-                System.Console.Write($"Tarefa : " + item1.NomeTarefa + "\t");
-                System.Console.Write($"Posicão : " + item1.Posicao + "\t");
-                System.Console.Write($"Peso : " + item1.Peso + "\n");
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Tarefa : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoVerdeEscuro();
+                Console.Write(item1.NomeTarefa + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Descricao : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoVerdeEscuro();
+                System.Console.WriteLine(item1.Descricao + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Posicao : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoVerdeEscuro();
+                System.Console.Write(item1.Posicao + "\t");
+                Painel.RetornaCorAnterior(cor);
+
+                cor = Painel.TextoVermelhoEscuro();
+                System.Console.Write($"Peso : ");
+                Painel.RetornaCorAnterior(cor);
+                cor = Painel.TextoVerdeEscuro();
+                System.Console.Write(item1.Peso + "\t");
+                Painel.RetornaCorAnterior(cor);
             }
-            Painel.RetornaCorAnterior(cor);
         }
     }
 }

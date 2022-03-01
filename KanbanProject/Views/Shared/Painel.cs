@@ -4,9 +4,14 @@ namespace KanbanProject.Views.Shared
 {
     static class Painel
     {
-       public static void ImprimirTela()
+        public static void ImprimirLinha()
         {
 
+            for (int i = 0; i <= 100; i++)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine();
         }
         public static ConsoleColor TextoAmarelo()
         {

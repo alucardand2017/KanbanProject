@@ -13,6 +13,14 @@ namespace KanbanProject
     {
         static void Main(string[] args)
         {
+
+            Console.SetBufferSize(1000, 1000);
+
+
+
+
+
+           
             try
             {
                 Cliente cliente = new Cliente();
@@ -25,6 +33,7 @@ namespace KanbanProject
                 //Salvar.Caminho(clientes[0]);
                 //Console.WriteLine(cliente);
                 //cliente.PrintProjetos();
+               
                 char cont;
                 Console.WriteLine("Digite uma escolha:  \n(c) - cadastrar projeto \n(p) - pesquisar projeto \n(r) - remover projeto \n(a) - alterar projeto \n(s) - sair");
                 char.TryParse(Console.ReadLine().ToLower(), out cont);
@@ -60,10 +69,7 @@ namespace KanbanProject
                 Console.WriteLine("Aconteceu alguma exceção! - " + e.Message);
                 Painel.RetornaCorAnterior(cor);
             }
-
-
-
-
+        
         }
     }
 }

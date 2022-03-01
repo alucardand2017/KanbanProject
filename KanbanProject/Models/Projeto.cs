@@ -26,8 +26,9 @@ namespace KanbanProject.Models
         }
         public void PrintProjeto()
         {
+            Painel.ImprimirLinha();
             ConsoleColor cor = Painel.TextoAmarelo();
-            System.Console.WriteLine($"\nProjeto : " + NomeProjeto);
+            System.Console.WriteLine($"Projeto : " + NomeProjeto);
             System.Console.WriteLine($"Descrição : " + Descricao);
             System.Console.WriteLine($"Data inicio : " + DataInicio);
             System.Console.WriteLine($"Data Final : " + DataFim);
@@ -39,14 +40,13 @@ namespace KanbanProject.Models
                 System.Console.Write($"Historia : ");
                 Painel.RetornaCorAnterior(cor);
                 cor = Painel.TextoAmareloEscuro();
-                Console.Write(item1.NomeHistoria + "\t");
+                Console.WriteLine(item1.NomeHistoria);
                 Painel.RetornaCorAnterior(cor);
-
                 cor = Painel.TextoVermelhoEscuro();
                 System.Console.Write($"Descricao : ");
                 Painel.RetornaCorAnterior(cor);
                 cor = Painel.TextoAmareloEscuro();
-                System.Console.WriteLine(item1.Descricao + "\t");
+                System.Console.WriteLine(item1.Descricao);
                 Painel.RetornaCorAnterior(cor);
 
                 cor = Painel.TextoVermelhoEscuro();
@@ -55,12 +55,11 @@ namespace KanbanProject.Models
                 cor = Painel.TextoAmareloEscuro();
                 System.Console.Write(item1.Posicao + "\t");
                 Painel.RetornaCorAnterior(cor);
-
                 cor = Painel.TextoVermelhoEscuro();
                 System.Console.Write($"Peso : ");
                 Painel.RetornaCorAnterior(cor);
                 cor = Painel.TextoAmareloEscuro();
-                System.Console.Write(item1.Peso + "\t");
+                System.Console.WriteLine(item1.Peso);
                 Painel.RetornaCorAnterior(cor);
             }
             foreach (var item1 in Tarefas)
@@ -90,10 +89,12 @@ namespace KanbanProject.Models
                 System.Console.Write($"Peso : ");
                 Painel.RetornaCorAnterior(cor);
                 cor = Painel.TextoVerdeEscuro();
-                System.Console.Write(item1.Peso + "\t");
+                System.Console.WriteLine(item1.Peso + "\t");
                 Painel.RetornaCorAnterior(cor);
             }
+            Painel.ImprimirLinha();
         }
+    
     }
 }
    

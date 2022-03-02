@@ -1,6 +1,5 @@
-﻿using KanbanProject.Views.Shared;
-using System;
-
+﻿using System;
+using KanbanProject.Views.Shared;
 
 namespace KanbanProject.Models.Services
 {
@@ -26,9 +25,8 @@ namespace KanbanProject.Models.Services
         }
         public static void RemoverProjeto(Cliente cliente)
         {
-            ConsoleColor cor = Painel.TextoAmarelo();
+            Painel.TextoAmarelo();
             int resp = PesquisarGeralProjeto(cliente);
-            cliente.Projetos[resp - 1].PrintProjeto();
             Console.WriteLine("Deseja realmente deletar esse projeto?");
             char.TryParse(Console.ReadLine(), out char del);
             if (del == 's')
@@ -36,7 +34,6 @@ namespace KanbanProject.Models.Services
                 cliente.Projetos.Remove(cliente.Projetos[resp - 1]);
                 Painel.TextoVermelhoPerigo();
                 Console.WriteLine("Projeto Removido com sucesso!");
-                Painel.RetornaCorAnterior(cor);
             }
 
 

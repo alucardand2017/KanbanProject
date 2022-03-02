@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
 namespace KanbanProject.Models
 {
     public class Cliente

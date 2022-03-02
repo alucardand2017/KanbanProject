@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using KanbanProject.Views.Shared;
-using System;
-
+﻿using System;
+using System.Collections.Generic;
 namespace KanbanProject.Models
 {
     public class Projeto
@@ -24,7 +22,7 @@ namespace KanbanProject.Models
             DataFim = dataFim;
             DonoProduto = donoProduto;
         }
-        public void PrintProjeto()
+       /* public void PrintProjeto()
         {
             Painel.ImprimirLinha();
             ConsoleColor cor = Painel.TextoAmarelo();
@@ -93,8 +91,9 @@ namespace KanbanProject.Models
                 Painel.RetornaCorAnterior(cor);
             }
             Painel.ImprimirLinha();
+        
         }
-    
+    */
     }
 }
    

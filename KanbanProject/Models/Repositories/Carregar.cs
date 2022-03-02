@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace KanbanProject.Models.Repositories
@@ -12,9 +7,9 @@ namespace KanbanProject.Models.Repositories
     {
         public static Cliente CaminhoCarregar()
         {
-            Console.WriteLine("Defina o caminho do arquivo:" + @"C:\Temp");
+            //Console.WriteLine("Defina o caminho do arquivo:" + @"C:\Temp");
             string caminhoArquivo = @"C:\Temp";
-            Console.WriteLine("Defina o nome do arquivo:"+ @"\ArquivoPadrao.json");
+            //Console.WriteLine("Defina o nome do arquivo:"+ @"\ArquivoPadrao.json");
             string nomeArquivo = @"\ArquivoPadrao.json";
             Cliente Json = JsonDesserializar(caminhoArquivo+ nomeArquivo);
             return Json;

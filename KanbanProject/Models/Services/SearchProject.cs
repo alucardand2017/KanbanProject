@@ -17,7 +17,7 @@ namespace KanbanProject.Models.Services
             var r2 = r1.Where(p => p.NomeProjeto.Contains(parametro)).ToList();
             foreach (var item in r2)
             {
-                item.PrintProjeto();
+                Console.WriteLine("Falta implementar");
             }
             int cont = r2.Count;
             if(cont != 0)

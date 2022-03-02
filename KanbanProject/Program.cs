@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using KanbanProject.Models;
-using KanbanProject.Models.Enums;
-using KanbanProject.Models.Services;
-using KanbanProject.Views;
-using KanbanProject.Models.Repositories;
 using KanbanProject.Views.Shared;
+using KanbanProject.Models.Repositories;
+using KanbanProject.Models.Services;
 
 namespace KanbanProject
 {
@@ -13,18 +10,18 @@ namespace KanbanProject
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            Console.SetWindowSize(120, 40);
+            Console.Beep();
+            Cliente cliente = new Cliente();
+            cliente = Carregar.CaminhoCarregar();
+            Painel.ImprimirCabecalho(cliente.Projetos[2]);
+            Painel.ImprimirCorpo(cliente.Projetos[2]);
+            Painel.ImprimirProjeto(cliente.Projetos[2]);
+            Painel.TextoBranco();
 
-            Console.SetBufferSize(1000, 1000);
-
-
-
-
-
-           
             try
             {
-                Cliente cliente = new Cliente();
-                cliente = Carregar.CaminhoCarregar();
                 //List<Funcionario> funcionarios = new List<Funcionario>();
                 //ClienteService.CadastrarCliente(clientes);
                 //ProjetoServices.CadastrarProjeto(clientes[0]);
@@ -33,7 +30,7 @@ namespace KanbanProject
                 //Salvar.Caminho(clientes[0]);
                 //Console.WriteLine(cliente);
                 //cliente.PrintProjetos();
-               
+                
                 char cont;
                 Console.WriteLine("Digite uma escolha:  \n(c) - cadastrar projeto \n(p) - pesquisar projeto \n(r) - remover projeto \n(a) - alterar projeto \n(s) - sair");
                 char.TryParse(Console.ReadLine().ToLower(), out cont);
@@ -46,9 +43,6 @@ namespace KanbanProject
                         break;
                     case 'p':
                         int prjt = ProjetoServices.PesquisarGeralProjeto(cliente);
-                        Console.WriteLine("PROJETO ATUAL: ");
-                        cliente.Projetos[prjt -1].PrintProjeto();
-                        Console.WriteLine();
                         break;
                     case 'r':
                         ProjetoServices.RemoverProjeto(cliente);
@@ -65,11 +59,12 @@ namespace KanbanProject
             }
             catch (Exception e)
             {
-                ConsoleColor cor = Painel.TextoVermelhoPerigo();
+                Painel.TextoVermelhoPerigo();
                 Console.WriteLine("Aconteceu alguma exceção! - " + e.Message);
-                Painel.RetornaCorAnterior(cor);
             }
-        
+            
+            
         }
     }
 }
+

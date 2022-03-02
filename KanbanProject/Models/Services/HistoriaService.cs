@@ -1,6 +1,5 @@
 ﻿using System;
 using KanbanProject.Models.Enums;
-
 namespace KanbanProject.Models.Services
 {
     class HistoriaService

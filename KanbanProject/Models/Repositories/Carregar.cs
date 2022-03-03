@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Newtonsoft.Json;
 
 namespace KanbanProject.Models.Repositories
@@ -17,9 +18,19 @@ namespace KanbanProject.Models.Repositories
         public static Cliente JsonDesserializar(string path)
         {
             string strJson ="";
-            using (StreamReader sr = new StreamReader(path))
+            try
             {
-                strJson = sr.ReadToEnd();
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    strJson = sr.ReadToEnd();
+                    return JsonConvert.DeserializeObject<Cliente>(strJson);
+
+                }
+            }
+            catch (IOException e)
+            {
+
+                Console.WriteLine("Arquivo não encontrado! " + e.Message); ;
             }
             return JsonConvert.DeserializeObject<Cliente>(strJson);
         }

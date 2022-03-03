@@ -1,4 +1,5 @@
 ﻿using System;
+using KanbanProject.Models.Repositories;
 using KanbanProject.Views.Shared;
 
 namespace KanbanProject.Models.Services
@@ -19,7 +20,7 @@ namespace KanbanProject.Models.Services
         }
         public static int PesquisarGeralProjeto(Cliente cliente)
         {
-            int resp = SearchProject.Search(cliente);
+            int resp = SearchProject.Varrer(cliente);
             Console.Clear();
             return resp;
         }
@@ -27,21 +28,27 @@ namespace KanbanProject.Models.Services
         {
             Painel.TextoAmarelo();
             int resp = PesquisarGeralProjeto(cliente);
-            Console.WriteLine("Deseja realmente deletar esse projeto?");
+            Painel.ImprimirProjeto(cliente.Projetos[resp]);
+            Console.WriteLine("Deseja realmente deletar esse projeto? (s/n)");
             char.TryParse(Console.ReadLine(), out char del);
             if (del == 's')
             {
-                cliente.Projetos.Remove(cliente.Projetos[resp - 1]);
+                cliente.Projetos.Remove(cliente.Projetos[resp]);
+                cliente.IndexProjetoAtual = 0;
                 Painel.TextoVermelhoPerigo();
-                Console.WriteLine("Projeto Removido com sucesso!");
+                Console.WriteLine("Projeto Removido com sucesso!\n");
+                Painel.TextoBranco();
+            }
+            else if (del == 'n')
+                return;
+            else
+            {
+                Console.WriteLine("digite um valor válido!");
+                return;
             }
 
-
         }
-        public static void AlterarProjeto(Cliente cliente)
-        {
-            throw new NotImplementedException("ainda não implementado!");
-        }
+       
     }
 }
 

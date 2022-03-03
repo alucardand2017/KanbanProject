@@ -3,6 +3,7 @@ namespace KanbanProject.Models
 {
     public class Cliente
     {
+        public int IndexProjetoAtual { get; set; }
         public List<Projeto> Projetos { get; set; } = new List<Projeto>();
         public string Nome { get; set; }
         public string Endereco { get; set; }

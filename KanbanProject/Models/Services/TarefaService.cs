@@ -17,5 +17,15 @@ namespace KanbanProject.Models.Services
             decimal peso = decimal.Parse(Console.ReadLine());
             projeto.Tarefas.Add(new Tarefa(nome,descricao, PosicaoKanban.Backlog, peso));
         }
+
+        internal static void AlterarTarefa(Projeto projeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void RemoverTarefa(Projeto projeto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

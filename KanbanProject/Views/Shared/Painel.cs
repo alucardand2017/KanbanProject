@@ -12,11 +12,14 @@ namespace KanbanProject.Views.Shared
             TextoBranco();
             ImprimirLinha();
             TextoVermelhoEscuro();
-            Console.WriteLine("|\t\t\t\t\t\t QUADRO KANBAN\t\t\t\t\t\t\t\t|");
+            Console.Write("|*************************************************| QUADRO KANBAN |****************************************************|");
+            Console.WriteLine();
             TextoBranco();
             ImprimirLinha();
-            Console.WriteLine("|      Backlog  \t\t Especificação \t\t\t Implementação \t\t\t Revisão de Código\t|");
-            Console.WriteLine($"|\t\t\t       \t      2        \t\t\t      2        \t\t\t   2   |        \t|");
+            Console.Write("|      Backlog  \t\t Especificação \t\t\t Implementação \t\t\t Revisão de Código\t|");
+            Console.WriteLine();
+            Console.Write($"|\t\t\t       \t      2        \t\t\t      2        \t\t\t   2   |        \t|");
+            Console.WriteLine();
             TextoBranco();
             ImprimirLinha();
 
@@ -101,23 +104,16 @@ namespace KanbanProject.Views.Shared
                 Console.Write(" ");
             }
             Console.Write("|");
-            for (int i = 0; i < 5; i++)
-            {
+            //for (int i = 0; i < 5; i++)
+            //{
 
-                Console.WriteLine("|\t\t|\t            |            \t|             |             \t|\t       |        \t|");
+            //    Console.WriteLine("|\t\t|\t            |            \t|             |             \t|\t       |        \t|");
 
-            }
+            //}
             ImprimirLinha();
         }
         public static void ImprimirProjeto(Projeto projeto)
         {
-            //TextoBranco();
-            //ImprimirLinha();
-            //TextoVermelhoEscuro();
-            //Console.WriteLine("\t\t\t\t\t\t QUADRO KANBAN: ");
-            //TextoBranco();
-            //ImprimirLinha();
-
             ImprimeInfo(projeto.NomeProjeto.ToUpper(), projeto.Descricao.ToUpper());
             foreach (var item in projeto.Historias)
             {
@@ -128,13 +124,24 @@ namespace KanbanProject.Views.Shared
                 ImprimeInfo(item.NomeTarefa, item.Descricao);
             }
         }
+        public static void ImprimirTelaPrincipal(Projeto projeto)
+        {
+            Console.Clear();
+            Console.SetWindowSize(120, 40);
+            Console.Beep();
+            Console.Title = "QUADRO KANBAN";
+            ImprimirCabecalho(projeto);
+            ImprimirCorpo(projeto);
+            ImprimirProjeto(projeto);
+            TextoBranco();
+        }
         public static void ImprimeInfo(string nome, string descricao)
         {
-            Painel.TextoBranco();
-            Painel.ImprimirLinha();
-            Painel.TextoAmareloEscuro();
+            TextoBranco();
+            ImprimirLinha();
+            TextoAmareloEscuro();
             Console.Write(nome + "  => ");
-            Painel.TextoAmarelo();
+            TextoAmarelo();
             Console.WriteLine(descricao);
         }
         public static void ImprimirLinha()
@@ -147,47 +154,38 @@ namespace KanbanProject.Views.Shared
         }
         public static void TextoAmarelo()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
         }
         public static void TextoBranco()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void TextoAmareloEscuro()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         }
         public static void TextoVermelhoPerigo()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
         }
         public static void TextoVermelhoEscuro()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkRed;
         }
         public static void TextoVerde()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
         }
         public static void TextoVerdeEscuro()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
         }
         public static void TextoAzul()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Blue;
         }
         public static void TextoAzulEscuro()
         {
-            ConsoleColor anterior = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
         }
     }

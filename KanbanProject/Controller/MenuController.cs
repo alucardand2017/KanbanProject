@@ -38,7 +38,7 @@ namespace KanbanProject.Controller
                         Salvar.Caminho(cliente);
                         break;
                     case '4':
-                        AlterarProjeto(cliente.Projetos[prjt]);
+                        ProjetoServices.AlterarProjeto(cliente.Projetos[prjt]);
                         Salvar.Caminho(cliente);
                         break;
                     case '5':
@@ -54,44 +54,6 @@ namespace KanbanProject.Controller
             }
             while (cont != '6');
         }
-        public static void AlterarProjeto(Projeto projeto)
-        {
-            char cont = '0';
-            do
-            {
-                Console.WriteLine("Escolha uma opção:  \n(1) - cadastrar Historia \n(2) - alterar Historia \n(3) - remover Historia \n(4)" +
-                " cadastrar Tarefa \n(5) - alterar Tarefa \n(6) - remover Tarefa \n(7) - sair");
-                char.TryParse(Console.ReadLine().ToLower(), out cont);
-                switch (cont)
-                {
-                    case '1':
-                        HistoriaService.CadastrarHistoria(projeto);
-                        break;
-                    case '2':
-                        int index = HistoriaService.PesquisarHistorias(projeto);
-                        HistoriaService.CadastrarHistoria(projeto, index);
-                        Console.WriteLine("Alteração realizada com sucesso!");
-                        break;
-                    case '3':
-                        HistoriaService.RemoverHistoria(projeto);
-                        break;
-                    case '4':
-                        TarefaService.CadastrarTarefa(projeto);
-                        break;
-                    case '5':
-                        TarefaService.AlterarTarefa(projeto);
-                        break;
-                    case '6':
-                        TarefaService.RemoverTarefa(projeto);
-                        break;
-                    case '7':
-                        break;
-                    default:
-                        cont = '0';
-                        Console.WriteLine("Digite uma oção válida!");
-                        break;
-                }
-            } while (cont != '7');
-        }
+        
     }
 }

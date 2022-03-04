@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using KanbanProject.Models.Enums;
 using KanbanProject.Views.Shared;
 
@@ -10,10 +9,10 @@ namespace KanbanProject.Models.Services
         public static void CadastrarHistoria(Projeto projeto)
         {
             ListaHistorias(projeto);
-            Console.WriteLine($"Nome da Historia: ");
+            Console.WriteLine($"Nome da Historia:");
             string nome = Console.ReadLine();
-            string descricao = "Como montar uma lista de viagem. ";
-            Console.WriteLine("Descreva rapidamente a historia:" + descricao);
+            Console.WriteLine("Descreva rapidamente a historia:");
+            string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da historia: " +
                 "(1) - Backlog\n" +
                 "(2) - Especificando\n");
@@ -21,14 +20,13 @@ namespace KanbanProject.Models.Services
             Console.Write("Qual o peso dessa historia: ");
             decimal peso = decimal.Parse(Console.ReadLine());
             projeto.Historias.Add(new Historia(nome, descricao, Enum.Parse<PosicaoKanban>(posicao), peso));
-
         }
         public static void CadastrarHistoria(Projeto projeto, int index)
         {
-            Console.WriteLine($"Novo Nome da Historia: ");
+            Console.WriteLine($"Nome da Historia:");
             string nome = Console.ReadLine();
-            string descricao = "Como montar uma lista de viagem. ";
-            Console.WriteLine("Descreva rapidamente a historia:" + descricao);
+            Console.WriteLine("Descreva rapidamente a historia:");
+            string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da historia: " +
                 "(1) - Backlog" +
                 "(2) - Especificando");
@@ -48,6 +46,12 @@ namespace KanbanProject.Models.Services
                 Console.Write("-" + item.NomeHistoria);
             }
             Console.WriteLine();
+        }
+        internal static void AlterarHistoria(Projeto projeto)
+        {
+            int index = HistoriaService.PesquisarHistorias(projeto);
+            HistoriaService.CadastrarHistoria(projeto, index);
+            Console.WriteLine("Alteração realizada com sucesso!");
         }
         internal static void RemoverHistoria(Projeto projeto)
         {
@@ -84,5 +88,6 @@ namespace KanbanProject.Models.Services
             else
                 return i;
         }
+
     }
 }

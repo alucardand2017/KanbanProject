@@ -45,7 +45,7 @@ namespace KanbanProject.Views.Shared
             {
                 Console.Write(item.NomeHistoria + " ");
             }
-            for(int i = 0; i< (14-3*h1.Count); i++)
+            for (int i = 0; i < (14 - 3 * h1.Count); i++)
             {
                 Console.Write(" ");
             }
@@ -104,17 +104,20 @@ namespace KanbanProject.Views.Shared
                 Console.Write(" ");
             }
             Console.Write("|");
-            //for (int i = 0; i < 5; i++)
-            //{
-
-            //    Console.WriteLine("|\t\t|\t            |            \t|             |             \t|\t       |        \t|");
-
-            //}
             ImprimirLinha();
         }
         public static void ImprimirProjeto(Projeto projeto)
         {
             ImprimeInfo(projeto.NomeProjeto.ToUpper(), projeto.Descricao.ToUpper());
+            TextoAmareloEscuro();
+            Console.Write("Data:");
+            TextoAmarelo();
+            Console.Write(projeto.DataInicio);
+            TextoAmareloEscuro();
+            Console.Write("-Previsão: ");
+            TextoAmarelo();
+            Console.WriteLine(projeto.DataFim);
+            TextoBranco();
             foreach (var item in projeto.Historias)
             {
                 ImprimeInfo(item.NomeHistoria, item.Descricao);
@@ -144,6 +147,7 @@ namespace KanbanProject.Views.Shared
             TextoAmarelo();
             Console.WriteLine(descricao);
         }
+        //estruturas básicas do layout
         public static void ImprimirLinha()
         {
             for (int i = 0; i < 120; i++)

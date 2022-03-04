@@ -32,53 +32,6 @@ namespace KanbanProject.Models
             System.Console.WriteLine($"Data Final : " + DataFim);
             System.Console.WriteLine($"Responsável : " + DonoProduto);
             Painel.TextoBranco();
-            Painel.ImprimirLinha();
-
-            /*
-            foreach (var item1 in Historias)
-            {
-                System.Console.Write($"Historia : ");
-             Painel.TextoAmareloEscuro();
-                Console.WriteLine(item1.NomeHistoria);
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Descricao : ");
-                Painel.TextoAmareloEscuro();
-                System.Console.WriteLine(item1.Descricao);
-
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Posicao : ");
-                Painel.TextoAmareloEscuro();
-                System.Console.Write(item1.Posicao + "\t");
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Peso : ");
-                Painel.TextoAmareloEscuro();
-                System.Console.WriteLine(item1.Peso);
-            }
-            foreach (var item1 in Tarefas)
-            {
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Tarefa : ");
-                Painel.TextoVerdeEscuro();
-                Console.Write(item1.NomeTarefa + "\t");
-
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Descricao : ");
-                Painel.TextoVerdeEscuro();
-                System.Console.WriteLine(item1.Descricao + "\t");
-
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Posicao : ");
-                Painel.TextoVerdeEscuro();
-                System.Console.Write(item1.Posicao + "\t");
-
-                Painel.TextoVermelhoEscuro();
-                System.Console.Write($"Peso : ");
-                Painel.TextoVerdeEscuro();
-                System.Console.WriteLine(item1.Peso + "\t");
-            }
-            */
-            Painel.ImprimirLinha();
-        
         }
     
     }

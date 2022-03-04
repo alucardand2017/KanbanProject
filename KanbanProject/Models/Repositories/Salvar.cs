@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using KanbanProject.Views.Shared;
 using Newtonsoft.Json;
 namespace KanbanProject.Models.Repositories
 {
@@ -7,9 +8,9 @@ namespace KanbanProject.Models.Repositories
     {
         public static void Caminho(Cliente cliente)
         {
-            Console.WriteLine("Defina o caminho do arquivo:" + @"C:\Temp");
+            Console.WriteLine("Definindo o caminho do arquivo:" + @"C:\Temp");
             string caminhoArquivo = @"C:\Temp";
-            Console.WriteLine("Defina o nome do arquivo: ArquivoPadrao");
+            Console.WriteLine("Definindo o nome do arquivo: ArquivoPadrao");
             string nomeArquivo = @"\ArquivoPadrao.json";
             JsonSerializar(cliente, caminhoArquivo + nomeArquivo);
         }
@@ -24,6 +25,9 @@ namespace KanbanProject.Models.Repositories
             {
                 sw.WriteLine(jsonString);
             }
+            Painel.TextoVermelhoPerigo();
+            Console.WriteLine(" Projeto Salvo!");
+            Painel.TextoBranco();
         }
     }
 }

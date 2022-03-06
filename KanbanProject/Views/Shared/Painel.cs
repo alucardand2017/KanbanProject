@@ -6,7 +6,7 @@ namespace KanbanProject.Views.Shared
 {
     static class Painel
     {
-        public static void ImprimirCabecalho(Projeto projeto)
+        public static void ImprimirCabecalho(Cliente cliente)
         {
             Console.Clear();
             TextoBranco();
@@ -18,13 +18,14 @@ namespace KanbanProject.Views.Shared
             ImprimirLinha();
             Console.Write("|      Backlog  \t\t Especificação \t\t\t Implementação \t\t\t Revisão de Código\t|");
             Console.WriteLine();
-            Console.Write($"|\t\t\t       \t      2        \t\t\t      2        \t\t\t   2   |        \t|");
+            Console.Write($"|                                      {cliente.WIPEspec}                               {cliente.WIPImple}                          {cliente.WIPRev}   |                |");
             Console.WriteLine();
             TextoBranco();
             ImprimirLinha();
 
             ImprimirLinha();
         }
+
         public static void ImprimirCorpo(Projeto projeto)
         {
             var h1 = projeto.Historias.Where(p => p.Posicao == PosicaoKanban.Backlog).ToList();
@@ -34,77 +35,177 @@ namespace KanbanProject.Views.Shared
             var h5 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Deploy_done).ToList();
             var h6 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Revision_doing).ToList();
             var h7 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Revision_done).ToList();
-
+            int[] aux1 = { 14, 19, 19, 13, 17, 14, 15 };
+            int[] aux2 = { 0, 0, 0, 0, 0, 0, 0 };
             Console.WriteLine("|\t\t|\tem espec.   |    espeficicada\t| em Impleme. |  Implementada\t|\tem rev.| revisada\t|");
-            for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
             {
-                Console.WriteLine("|               |                   |                   |             |                 |              |               |");
+                Console.Write("| ");
+                TextoVerde();
+                foreach (var item in h1)
+                {
+                    if ((aux1[0] - 3 * aux2[0]) > 3)
+                    {
+                        Console.Write(item.NomeHistoria + " ");
+                        aux2[0]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[0] - 3 * aux2[0]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|"); //mudei
+
+
+                TextoVerde();
+                foreach (var item in h2)
+                {
+                    if ((aux1[1] - 3 * aux2[1]) > 3)
+                    {
+                        Console.Write(item.NomeHistoria + " ");
+                        aux2[1]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[1] - 3 * aux2[1]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|"); //mudei
+
+
+
+
+                TextoVerde();
+                foreach (var item in h3)
+                {
+                    if ((aux1[2] - 3 * aux2[2]) > 3)
+                    {
+                        Console.Write(item.NomeTarefa + " ");
+                        aux2[2]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[2] - 3 * aux2[2]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+
+
+
+
+
+
+                TextoVerde();
+                foreach (var item in h3)
+                {
+                    if ((aux1[3] - 3 * aux2[3]) > 3)
+                    {
+                        Console.Write(item.NomeTarefa + " ");
+                        aux2[3]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[3] - 3 * aux2[3]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+
+
+
+
+
+
+                TextoVerde();
+                foreach (var item in h5)
+                {
+                    if ((aux1[4] - 3 * aux2[4]) > 3)
+                    {
+                        Console.Write(item.NomeTarefa + " ");
+                        aux2[4]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[4] - 3 * aux2[4]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+
+
+
+
+
+
+                TextoVerde();
+                foreach (var item in h6)
+                {
+                    if ((aux1[5] - 3 * aux2[5]) > 3)
+                    {
+                        Console.Write(item.NomeTarefa + " ");
+                        aux2[5]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[5] - 3 * aux2[5]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+
+
+
+
+
+
+                TextoVerde();
+                foreach (var item in h7)
+                {
+                    if ((aux1[6] - 3 * aux2[6]) > 3)
+                    {
+                        Console.Write(item.NomeTarefa + " ");
+                        aux2[6]++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                TextoBranco();
+                for (int i = 0; i < (aux1[6] - 3 * aux2[6]); i++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("|");
+                ImprimirLinha();
             }
-            Console.Write("| ");
-            foreach (var item in h1)
-            {
-                Console.Write(item.NomeHistoria + " ");
-            }
-            for (int i = 0; i < (14 - 3 * h1.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h2)
-            {
-                Console.Write(item.NomeHistoria + " ");
-            }
-            for (int i = 0; i < (19 - 3 * h2.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h3)
-            {
-                Console.Write(item.NomeTarefa + " ");
-            }
-            for (int i = 0; i < (19 - 3 * h3.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h4)
-            {
-                Console.Write(item.NomeTarefa + " ");
-            }
-            for (int i = 0; i < (13 - 3 * h4.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h5)
-            {
-                Console.Write(item.NomeTarefa + " ");
-            }
-            for (int i = 0; i < (17 - 3 * h5.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h6)
-            {
-                Console.Write(item.NomeTarefa + " ");
-            }
-            for (int i = 0; i < (14 - 3 * h6.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            foreach (var item in h7)
-            {
-                Console.Write(item.NomeTarefa + " ");
-            }
-            for (int i = 0; i < (15 - 3 * h7.Count); i++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write("|");
-            ImprimirLinha();
         }
         public static void ImprimirProjeto(Projeto projeto)
         {
@@ -127,13 +228,13 @@ namespace KanbanProject.Views.Shared
                 ImprimeInfo(item.NomeTarefa, item.Descricao);
             }
         }
-        public static void ImprimirTelaPrincipal(Projeto projeto)
+        public static void ImprimirTelaPrincipal(Cliente cliente, Projeto projeto)
         {
             Console.Clear();
             Console.SetWindowSize(120, 40);
             Console.Beep();
             Console.Title = "QUADRO KANBAN";
-            ImprimirCabecalho(projeto);
+            ImprimirCabecalho(cliente);
             ImprimirCorpo(projeto);
             ImprimirProjeto(projeto);
             TextoBranco();

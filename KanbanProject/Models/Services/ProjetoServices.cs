@@ -13,10 +13,10 @@ namespace KanbanProject.Models.Services
             Console.WriteLine("Inserir Descrição do projeto:");
             string descricao = Console.ReadLine();
             Console.WriteLine("Data de Inicio: (dd/MM/YYYY)");
-            DateTime dataInicio = DateTime.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
+            DateTime dataInicio = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.WriteLine("Previsão de término: (dd/MM/YYYY)");
             DateTime dataFim = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.Write ("Inserir responsável do produto: ");
+            Console.Write("Inserir responsável do produto: ");
             string donoProduto = Console.ReadLine();
             cliente.Projetos.Add(new Projeto(nomeProjeto, descricao, dataInicio, dataFim, donoProduto));
         }
@@ -111,6 +111,7 @@ namespace KanbanProject.Models.Services
                         TarefaService.RemoverTarefa(projeto);
                         break;
                     case '7':
+
                         break;
                     default:
                         cont = '0';

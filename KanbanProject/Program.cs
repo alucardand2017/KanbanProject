@@ -19,7 +19,7 @@ namespace KanbanProject
                 char rodar;
                 do
                 {
-                    Painel.ImprimirTelaPrincipal(cliente.Projetos[cliente.IndexProjetoAtual]);
+                    Painel.ImprimirTelaPrincipal( cliente, cliente.Projetos[cliente.IndexProjetoAtual]);
                     MenuController.MenuPrincipal(cliente, cliente.IndexProjetoAtual);
                     //logica para sair do programa
                     Console.WriteLine("Deseja sair do programa: (s/n)");

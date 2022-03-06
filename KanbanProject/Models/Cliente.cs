@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 namespace KanbanProject.Models
 {
     public class Cliente
@@ -7,7 +8,10 @@ namespace KanbanProject.Models
         public List<Projeto> Projetos { get; set; } = new List<Projeto>();
         public string Nome { get; set; }
         public string Endereco { get; set; }
-        public string  Telefone { get; set; }
+        public string Telefone { get; set; }
+        public double WIPEspec { get; set; }
+        public double WIPImple { get; set; }
+        public double WIPRev { get; set; }
         public Cliente()
         {
         }
@@ -16,13 +20,16 @@ namespace KanbanProject.Models
             Nome = nome;
             Endereco = endereco;
             Telefone = telefone;
+            WIPEspec = 1;
+            WIPImple = 1;
+            WIPRev = 1;
         }
         public void PrintProjetos()
         {
             int count = 1;
             foreach (var item in Projetos)
-            { 
-                System.Console.WriteLine($"Projeto  {count}: " +item.NomeProjeto);
+            {
+                System.Console.WriteLine($"Projeto  {count}: " + item.NomeProjeto);
                 System.Console.WriteLine($"Descrição : " + item.Descricao);
                 System.Console.WriteLine($"Data inicio : " + item.DataInicio);
                 System.Console.WriteLine($"Data Final : " + item.DataFim);

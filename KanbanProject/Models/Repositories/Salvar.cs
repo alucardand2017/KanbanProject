@@ -8,9 +8,9 @@ namespace KanbanProject.Models.Repositories
     {
         public static void Caminho(Cliente cliente)
         {
-            Console.WriteLine("Definindo o caminho do arquivo:" + @"C:\Temp");
+            Console.WriteLine("Definindo o caminho do arquivo de projeto:" + @"C:\Temp");
             string caminhoArquivo = @"C:\Temp";
-            Console.WriteLine("Definindo o nome do arquivo: ArquivoPadrao");
+            Console.WriteLine("Definindo o nome do arquivo de projeto: ArquivoPadrao");
             string nomeArquivo = @"\ArquivoPadrao.json";
             JsonSerializar(cliente, caminhoArquivo + nomeArquivo);
         }

@@ -19,8 +19,8 @@ namespace KanbanProject.Controller
             char cont = '0';
             do
             {
-                Console.WriteLine("Digite uma escolha:  \n(1) - cadastrar projeto \n(2) - carregar projeto do cliente \n(3) - remover projeto \n(4) - alterar projeto \n(5) - salvar alterações \n(6) - sair");
-                char.TryParse(Console.ReadLine().ToLower(), out cont);
+                Console.WriteLine("Digite uma escolha:  \n(1) - cadastrar projeto \n(2) - carregar projeto do cliente \n(3) - remover projeto \n(4) - alterar projeto \n(5) - config. WIP \n(6) - salvar alterações \n(7) - sair");
+                  char.TryParse(Console.ReadLine().ToLower(), out cont);
                 switch (cont)
                 {
                     case '1':
@@ -29,7 +29,7 @@ namespace KanbanProject.Controller
                         break;
                     case '2':
                         prjt = ProjetoServices.PesquisarGeralProjeto(cliente);
-                        Painel.ImprimirTelaPrincipal(cliente.Projetos[prjt]);
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         cliente.IndexProjetoAtual = prjt;
                         Salvar.Caminho(cliente);
                         break;
@@ -42,10 +42,16 @@ namespace KanbanProject.Controller
                         Salvar.Caminho(cliente);
                         break;
                     case '5':
+                        KanbanService.CalcKanbanWIP(cliente);
+                        Salvar.Caminho(cliente);
+                        break;
+                    
+                    case '6': 
                         Salvar.Caminho(cliente);
                         Console.WriteLine("Dados salvos com sucesso!");
                         break;
-                    case '6':
+                    case '7':
+
                         break;
                     default:
                         cont = '0';

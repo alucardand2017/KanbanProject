@@ -8,13 +8,13 @@ namespace KanbanProject.Models.Services
     {
         public static void CadastrarProjeto(Cliente cliente)
         {
-            Console.Write("Inserir Nome do Projeto: ");
+            Console.Write("Inserir Nome do Projeto (por ex. H1, HA): ");
             string nomeProjeto = Console.ReadLine();
             Console.WriteLine("Inserir Descrição do projeto:");
             string descricao = Console.ReadLine();
-            Console.WriteLine("Data de Inicio: (dd/MM/YYYY)");
+            Console.WriteLine("Data de Inicio: (MM/dd/YYYY)");
             DateTime dataInicio = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("Previsão de término: (dd/MM/YYYY)");
+            Console.WriteLine("Previsão de término: (MM/dd/YYYY)");
             DateTime dataFim = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Inserir responsável do produto: ");
             string donoProduto = Console.ReadLine();
@@ -23,13 +23,13 @@ namespace KanbanProject.Models.Services
         public static void CadastrarProjeto(Projeto projeto)
         {
             Painel.TextoBranco();
-            Console.Write("Inserir Nome do Projeto: ");
+            Console.Write("Inserir Nome do Projeto: (por ex. H1, HA): ");
             projeto.NomeProjeto = Console.ReadLine();
             Console.WriteLine("Inserir Descrição do projeto:");
             projeto.Descricao = Console.ReadLine();
-            Console.WriteLine("Data de Inicio: (dd/MM/YYYY)");
+            Console.WriteLine("Data de Inicio: (MM/dd/YYYY)");
             projeto.DataInicio = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("Previsão de término: (dd/MM/YYYY)");
+            Console.WriteLine("Previsão de término: (MM/dd/YYYY)");
             projeto.DataFim = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Inserir responsável do produto: ");
             projeto.DonoProduto = Console.ReadLine();
@@ -46,7 +46,7 @@ namespace KanbanProject.Models.Services
             int cont = cliente.Projetos.Count;
             if (cont != 0)
             {
-                Console.WriteLine("Digite o número do projeto que deseja puxar:");
+                Console.WriteLine("Digite o número temporário do projeto que deseja puxar:");
                 for (int i = 0; i < cont; i++)
                     Console.WriteLine($"- ({i})");
                 return int.Parse(Console.ReadLine());
@@ -75,7 +75,6 @@ namespace KanbanProject.Models.Services
                 Console.WriteLine("digite um valor válido!");
                 return;
             }
-
         }
         public static void AlterarProjeto(Projeto projeto)
         {
@@ -111,7 +110,6 @@ namespace KanbanProject.Models.Services
                         TarefaService.RemoverTarefa(projeto);
                         break;
                     case '7':
-
                         break;
                     default:
                         cont = '0';

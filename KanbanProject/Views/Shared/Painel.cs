@@ -16,9 +16,9 @@ namespace KanbanProject.Views.Shared
             Console.WriteLine();
             TextoBranco();
             ImprimirLinha();
-            Console.Write("|      Backlog  \t\t Especificação \t\t\t Implementação \t\t\t Revisão de Código\t|");
+            Console.Write("|   Backlog                   Especificação                     Implementação                  Revisão de Código       |");
             Console.WriteLine();
-            Console.Write($"|                                      {cliente.WIPEspec}                               {cliente.WIPImple}                          {cliente.WIPRev}   |                |");
+            Console.Write($"|               |                   {cliente.WIPEspec}                   |             {cliente.WIPImple}                 |          {cliente.WIPRev}   |               |");
             Console.WriteLine();
             TextoBranco();
             ImprimirLinha();
@@ -35,12 +35,13 @@ namespace KanbanProject.Views.Shared
             var h5 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Deploy_done).ToList();
             var h6 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Revision_doing).ToList();
             var h7 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Revision_done).ToList();
-            int[] aux1 = { 14, 19, 19, 13, 17, 14, 15 };
-            int[] aux2 = { 0, 0, 0, 0, 0, 0, 0 };
+            int[] aux1 = { 14, 19, 19, 13, 17, 14, 15 }; //definição do tamanho de cada campo do quadro.
             Console.WriteLine("|\t\t|\tem espec.   |    espeficicada\t| em Impleme. |  Implementada\t|\tem rev.| revisada\t|");
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < 10; j++)
             {
+                int[] aux2 = { 0, 0, 0, 0, 0, 0, 0 }; //contador de cada objeto lançado na linha de cada fase do quadro.
                 Console.Write("| ");
+                //ELEMENTOS A SEREM IMPRESSOS NO QUADRO
                 TextoVerde();
                 foreach (var item in h1)
                 {
@@ -50,17 +51,14 @@ namespace KanbanProject.Views.Shared
                         aux2[0]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h1.Count >= aux2[0])
+                    h1.RemoveRange(0, aux2[0]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[0] - 3 * aux2[0]); i++)
-                {
                     Console.Write(" ");
-                }
-                Console.Write("|"); //mudei
-
+                Console.Write("|"); //
 
                 TextoVerde();
                 foreach (var item in h2)
@@ -71,19 +69,14 @@ namespace KanbanProject.Views.Shared
                         aux2[1]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h2.Count >= aux2[1])
+                    h2.RemoveRange(0, aux2[1]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[1] - 3 * aux2[1]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|"); //mudei
-
-
-
 
                 TextoVerde();
                 foreach (var item in h3)
@@ -94,24 +87,17 @@ namespace KanbanProject.Views.Shared
                         aux2[2]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h3.Count >= aux2[2])
+                    h3.RemoveRange(0, aux2[2]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[2] - 3 * aux2[2]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|");
 
-
-
-
-
-
                 TextoVerde();
-                foreach (var item in h3)
+                foreach (var item in h4)
                 {
                     if ((aux1[3] - 3 * aux2[3]) > 3)
                     {
@@ -119,21 +105,14 @@ namespace KanbanProject.Views.Shared
                         aux2[3]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h4.Count >= aux2[3])
+                    h4.RemoveRange(0, aux2[3]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[3] - 3 * aux2[3]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|");
-
-
-
-
-
 
                 TextoVerde();
                 foreach (var item in h5)
@@ -144,21 +123,14 @@ namespace KanbanProject.Views.Shared
                         aux2[4]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h5.Count >= aux2[4])
+                    h5.RemoveRange(0, aux2[4]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[4] - 3 * aux2[4]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|");
-
-
-
-
-
 
                 TextoVerde();
                 foreach (var item in h6)
@@ -169,21 +141,14 @@ namespace KanbanProject.Views.Shared
                         aux2[5]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h6.Count >= aux2[5])
+                    h6.RemoveRange(0, aux2[5]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[5] - 3 * aux2[5]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|");
-
-
-
-
-
 
                 TextoVerde();
                 foreach (var item in h7)
@@ -194,18 +159,17 @@ namespace KanbanProject.Views.Shared
                         aux2[6]++;
                     }
                     else
-                    {
                         break;
-                    }
                 }
+                if (h7.Count >= aux2[6])
+                    h7.RemoveRange(0, aux2[6]);
                 TextoBranco();
                 for (int i = 0; i < (aux1[6] - 3 * aux2[6]); i++)
-                {
                     Console.Write(" ");
-                }
                 Console.Write("|");
-                ImprimirLinha();
+                Console.WriteLine();
             }
+            ImprimirLinha();
         }
         public static void ImprimirProjeto(Projeto projeto)
         {
@@ -243,7 +207,7 @@ namespace KanbanProject.Views.Shared
         {
             TextoBranco();
             ImprimirLinha();
-            TextoAmareloEscuro();
+            TextoVerdeEscuro();
             Console.Write(nome + "  => ");
             TextoAmarelo();
             Console.WriteLine(descricao);

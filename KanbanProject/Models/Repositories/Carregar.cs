@@ -24,12 +24,10 @@ namespace KanbanProject.Models.Repositories
                 {
                     strJson = sr.ReadToEnd();
                     return JsonConvert.DeserializeObject<Cliente>(strJson);
-
                 }
             }
             catch (IOException e)
             {
-
                 Console.WriteLine("Arquivo não encontrado! " + e.Message); ;
             }
             return JsonConvert.DeserializeObject<Cliente>(strJson);

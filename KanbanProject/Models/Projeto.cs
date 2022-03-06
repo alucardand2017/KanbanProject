@@ -12,7 +12,6 @@ namespace KanbanProject.Models
         public string DonoProduto { get; set; }
         public List<Historia> Historias { get; set; } = new List<Historia>();
         public List<Tarefa> Tarefas { get; set; } = new List<Tarefa>();
-       
         public Projeto()
         {
         }
@@ -24,11 +23,6 @@ namespace KanbanProject.Models
             DataFim = dataFim;
             DonoProduto = donoProduto;
         }
-
-      
-
-
-      
         public void PrintProjeto()
         {
             Painel.TextoAmareloEscuro();

@@ -88,6 +88,5 @@ namespace KanbanProject.Models.Services
             else
                 return i;
         }
-
     }
 }

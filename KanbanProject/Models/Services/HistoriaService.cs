@@ -9,8 +9,9 @@ namespace KanbanProject.Models.Services
         public static void CadastrarHistoria(Projeto projeto)
         {
             ListaHistorias(projeto);
-            Console.WriteLine($"Nome da Historia:");
-            string nome = Console.ReadLine();
+            Console.WriteLine($"Nome da Historia (por ex. H1, HA): ");
+            var nomeFatiado = Console.ReadLine().ToCharArray();
+            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
             Console.WriteLine("Descreva rapidamente a historia:");
             string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da historia: " +
@@ -23,8 +24,9 @@ namespace KanbanProject.Models.Services
         }
         public static void CadastrarHistoria(Projeto projeto, int index)
         {
-            Console.WriteLine($"Nome da Historia:");
-            string nome = Console.ReadLine();
+            Console.WriteLine($"Nome da Historia (por ex. H1, HA): ");
+            var nomeFatiado = Console.ReadLine().ToCharArray();
+            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
             Console.WriteLine("Descreva rapidamente a historia:");
             string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da historia: " +

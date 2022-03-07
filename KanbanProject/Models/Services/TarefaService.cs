@@ -10,7 +10,8 @@ namespace KanbanProject.Models.Services
         {
             ListaTarefas(projeto);
             Console.WriteLine($"Nome da Tarefa:");
-            string nome = Console.ReadLine();
+            var nomeFatiado = Console.ReadLine().ToCharArray();
+            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
             Console.WriteLine("Descreva rapidamente a Tarefa:");
             string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da Tarefa: " +
@@ -21,7 +22,20 @@ namespace KanbanProject.Models.Services
                 "(5) - Implementado\n " +
                 "(6) - Revisando\n " +
                 "(7) - Revisado\n");
-            string posicao = Console.ReadLine();
+            string posicao = "";
+            bool flagPosicao = true;
+            do
+            {
+                if (int.TryParse(Console.ReadLine(), out int x))
+                {
+                    posicao = x.ToString();
+                    flagPosicao = false;
+                }
+                else
+                {
+                    Console.WriteLine("Digite um número válido!");
+                }
+            } while (flagPosicao);
             Console.Write("Qual o peso dessa Tarefa: ");
             decimal peso = decimal.Parse(Console.ReadLine());
             projeto.Tarefas.Add(new Tarefa(nome, descricao, Enum.Parse<PosicaoKanban>(posicao), peso));
@@ -29,7 +43,8 @@ namespace KanbanProject.Models.Services
         public static void CadastrarTarefa(Projeto projeto, int index2)
         {
             Console.WriteLine($"Nome da Tarefa:");
-            string nome = Console.ReadLine();
+            var nomeFatiado = Console.ReadLine().ToCharArray();
+            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
             Console.WriteLine("Descreva rapidamente a Tarefa:");
             string descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da Tarefa: " +
@@ -40,7 +55,20 @@ namespace KanbanProject.Models.Services
                 "(5) - Implementado\n " +
                 "(6) - Revisando\n " +
                 "(7) - Revisado\n");
-            string posicao = Console.ReadLine();
+            string posicao = "";
+            bool flagPosicao = true;
+            do
+            {
+                if (int.TryParse(Console.ReadLine(), out int x))
+                {
+                    posicao = x.ToString();
+                    flagPosicao = false;
+                }
+                else
+                {
+                    Console.WriteLine("Digite um número válido!");
+                }
+            } while (flagPosicao);
             Console.Write("Qual o peso dessa Tarefa: ");
             decimal peso = decimal.Parse(Console.ReadLine());
             projeto.Tarefas[index2].NomeTarefa = nome;
@@ -92,7 +120,7 @@ namespace KanbanProject.Models.Services
             int i = projeto.Tarefas.FindIndex(p => p.NomeTarefa == nome);
             if (i < 0 || i > projeto.Historias.Count)
             {
-                Console.WriteLine("Tarefa não encontrada, retornando melhor resultado.");
+                Console.WriteLine("Tarefa não encontrada, retornando o primeiro resultado encontrado.");
                 return 0;
             }
             else

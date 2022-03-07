@@ -2,37 +2,82 @@
 using KanbanProject.Models.Repositories;
 using KanbanProject.Views.Shared;
 using System.Globalization;
+using System.Threading;
 namespace KanbanProject.Models.Services
 {
     class ProjetoServices
     {
         public static void CadastrarProjeto(Cliente cliente)
         {
-            Console.Write("Inserir Nome do Projeto (por ex. H1, HA): ");
+            Console.Write("Inserir Nome do Projeto: ");
             string nomeProjeto = Console.ReadLine();
             Console.WriteLine("Inserir Descrição do projeto:");
             string descricao = Console.ReadLine();
-            Console.WriteLine("Data de Inicio: (MM/dd/YYYY)");
-            DateTime dataInicio = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("Previsão de término: (MM/dd/YYYY)");
-            DateTime dataFim = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            DateTime dInicio = DateTime.Now;
+            DateTime dFim = DateTime.Now;
+            bool flagData = true;
+            do
+            {
+                Console.Write("Data de Inicio (dd/MM/YYYY): ");
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime _dataInicio))
+                {
+                    Console.Write("Previsão de término (dd/MM/YYYY): ");
+                    if (DateTime.TryParse(Console.ReadLine(), out DateTime _dataFim) && _dataFim > _dataInicio)
+                    {
+                        dInicio = _dataFim;
+                        dFim = _dataInicio;
+                        flagData = false;
+                    }
+                    else
+                        Console.WriteLine("Digite uma data válida. Repita a operação!");
+                }
+                else
+                    Console.WriteLine("Digitação um data válida. Repita a operação!");
+
+            } while (flagData);
+
             Console.Write("Inserir responsável do produto: ");
             string donoProduto = Console.ReadLine();
-            cliente.Projetos.Add(new Projeto(nomeProjeto, descricao, dataInicio, dataFim, donoProduto));
+
+            cliente.Projetos.Add(new Projeto(nomeProjeto, descricao, dInicio, dFim, donoProduto));
         }
         public static void CadastrarProjeto(Projeto projeto)
         {
-            Painel.TextoBranco();
-            Console.Write("Inserir Nome do Projeto: (por ex. H1, HA): ");
+            Console.Write("Inserir Nome do Projeto: ");
             projeto.NomeProjeto = Console.ReadLine();
             Console.WriteLine("Inserir Descrição do projeto:");
             projeto.Descricao = Console.ReadLine();
-            Console.WriteLine("Data de Inicio: (MM/dd/YYYY)");
-            projeto.DataInicio = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("Previsão de término: (MM/dd/YYYY)");
-            projeto.DataFim = DateTime.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            DateTime dInicio = DateTime.Now;
+            DateTime dFim = DateTime.Now;
+            bool flagData = true;
+            do
+            {
+                Console.Write("Data de Inicio (dd/MM/YYYY): ");
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime _dataInicio))
+                {
+                    Console.Write("Previsão de término (dd/MM/YYYY): ");
+                    if (DateTime.TryParse(Console.ReadLine(), out DateTime _dataFim) && _dataFim > _dataInicio)
+                    {
+                        dInicio = _dataFim;
+                        dFim = _dataInicio;
+                        flagData = false;
+                    }
+                    else
+                    {
+                        Painel.TextoVermelhoPerigo();
+                        Console.WriteLine("Digitação errada. Repita a operação!");
+                        Painel.TextoBranco();
+                    }
+                }
+                else
+                {
+                    Painel.TextoVermelhoPerigo();
+                    Console.WriteLine("Digitação errada. Repita a operação!");
+                    Painel.TextoBranco();
+                }
+            } while (flagData);
             Console.Write("Inserir responsável do produto: ");
-            projeto.DonoProduto = Console.ReadLine();
+            string donoProduto = Console.ReadLine();
         }
         public static int PesquisarGeralProjeto(Cliente cliente)
         {
@@ -46,12 +91,24 @@ namespace KanbanProject.Models.Services
             int cont = cliente.Projetos.Count;
             if (cont != 0)
             {
+                bool flagProjeto = true;
                 Console.WriteLine("Digite o número temporário do projeto que deseja puxar:");
                 for (int i = 0; i < cont; i++)
                     Console.WriteLine($"- ({i})");
-                return int.Parse(Console.ReadLine());
+                do
+                {
+                    if (int.TryParse(Console.ReadLine(), out int x) && x < cont && x >= 0)
+                    {
+                        flagProjeto = false;
+                        return x;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Digite um número válido dentre os possíveis!");
+                    }
+                } while (flagProjeto);   
             }
-            throw new ArgumentException("não há projetos listados nessas condições!");
+            throw new ArgumentException("Erro grave na pesquisa de projetos!");
         }
         public static void RemoverProjeto(Cliente cliente)
         {

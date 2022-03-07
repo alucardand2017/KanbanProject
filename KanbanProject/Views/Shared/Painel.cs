@@ -37,7 +37,7 @@ namespace KanbanProject.Views.Shared
             var h7 = projeto.Tarefas.Where(p => p.Posicao == PosicaoKanban.Revision_done).ToList();
             int[] aux1 = { 14, 19, 19, 13, 17, 14, 15 }; //definição do tamanho de cada campo do quadro.
             Console.WriteLine("|\t\t|\tem espec.   |    espeficicada\t| em Impleme. |  Implementada\t|\tem rev.| revisada\t|");
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 6; j++)
             {
                 int[] aux2 = { 0, 0, 0, 0, 0, 0, 0 }; //contador de cada objeto lançado na linha de cada fase do quadro.
                 Console.Write("| ");

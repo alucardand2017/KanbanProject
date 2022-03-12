@@ -1,8 +1,5 @@
 ﻿using System;
-using KanbanProject.Models.Repositories;
 using KanbanProject.Views.Shared;
-using System.Globalization;
-using System.Threading;
 namespace KanbanProject.Models.Services
 {
     class ProjetoServices
@@ -24,8 +21,8 @@ namespace KanbanProject.Models.Services
                     Console.Write("Previsão de término (dd/MM/YYYY): ");
                     if (DateTime.TryParse(Console.ReadLine(), out DateTime _dataFim) && _dataFim > _dataInicio)
                     {
-                        dInicio = _dataFim;
-                        dFim = _dataInicio;
+                        dInicio = _dataInicio;
+                        dFim = _dataFim;
                         flagData = false;
                     }
                     else
@@ -38,7 +35,6 @@ namespace KanbanProject.Models.Services
 
             Console.Write("Inserir responsável do produto: ");
             string donoProduto = Console.ReadLine();
-
             cliente.Projetos.Add(new Projeto(nomeProjeto, descricao, dInicio, dFim, donoProduto));
         }
         public static void CadastrarProjeto(Projeto projeto)
@@ -92,7 +88,7 @@ namespace KanbanProject.Models.Services
             if (cont != 0)
             {
                 bool flagProjeto = true;
-                Console.WriteLine("Digite o número temporário do projeto que deseja puxar:");
+                Console.WriteLine("Digite o indice do projeto que deseja puxar:");
                 for (int i = 0; i < cont; i++)
                     Console.WriteLine($"- ({i})");
                 do

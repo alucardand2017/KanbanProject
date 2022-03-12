@@ -3,16 +3,12 @@ using KanbanProject.Models.Repositories;
 using KanbanProject.Models.Services;
 using KanbanProject.Views.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KanbanProject.Controller
 {
     class MenuController
     {
-        public static void MenuPrincipal(Cliente cliente, int index)
+        public static void MenuPrincipal(string path, Cliente cliente, int index)
         {
             int prjt = index;
             char cont = '0';
@@ -23,30 +19,44 @@ namespace KanbanProject.Controller
                 switch (cont)
                 {
                     case '1':
+                        Console.Clear();
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         ProjetoServices.CadastrarProjeto(cliente);
-                        Salvar.Caminho(cliente);
+                        Console.Clear();
+                        prjt = cliente.Projetos.Count - 1;
+                        cliente.IndexProjetoAtual = prjt;
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '2':
+                        Console.Clear();
                         prjt = ProjetoServices.PesquisarGeralProjeto(cliente);
                         Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         cliente.IndexProjetoAtual = prjt;
-                        Salvar.Caminho(cliente);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '3':
+                        Console.Clear();
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         ProjetoServices.RemoverProjeto(cliente);
-                        Salvar.Caminho(cliente);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '4':
+                        Console.Clear();
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         ProjetoServices.AlterarProjeto(cliente.Projetos[prjt]);
-                        Salvar.Caminho(cliente);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '5':
+                        Console.Clear();
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
                         KanbanService.CalcKanbanWIP(cliente);
-                        Salvar.Caminho(cliente);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '6':
-                        Salvar.Caminho(cliente);
-                        Console.WriteLine("Dados salvos com sucesso!");
+                        Console.Clear();
+                        Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[prjt]);
+                        Salvar.Caminho(cliente, path);
                         break;
                     case '7':
                         break;

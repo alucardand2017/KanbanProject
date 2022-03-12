@@ -25,7 +25,6 @@ namespace KanbanProject.Views.Shared
 
             ImprimirLinha();
         }
-
         public static void ImprimirCorpo(Projeto projeto)
         {
             var h1 = projeto.Historias.Where(p => p.Posicao == PosicaoKanban.Backlog).ToList();
@@ -185,11 +184,11 @@ namespace KanbanProject.Views.Shared
             TextoBranco();
             foreach (var item in projeto.Historias)
             {
-                ImprimeInfo(item.NomeHistoria, item.Descricao);
+                ImprimeInfo(item.Peso, item.NomeHistoria, item.Descricao);
             }
             foreach (var item in projeto.Tarefas)
             {
-                ImprimeInfo(item.NomeTarefa, item.Descricao);
+                ImprimeInfo(item.Peso, item.NomeTarefa, item.Descricao);
             }
         }
         public static void ImprimirTelaPrincipal(Cliente cliente, Projeto projeto)
@@ -212,7 +211,33 @@ namespace KanbanProject.Views.Shared
             TextoAmarelo();
             Console.WriteLine(descricao);
         }
+        public static void ImprimeInfo(decimal peso, string nome, string descricao)
+        {
+            TextoBranco();
+            ImprimirLinha();
+            Console.Write(peso + " => ");
+            TextoVerdeEscuro();
+            Console.Write(nome + "  => ");
+            TextoAmarelo();
+            Console.WriteLine(descricao);
+        }
         //estruturas básicas do layout
+        public static void TextoAzul()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+        }
+        public static void TextoVerde()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+        }
+        public static void TextoBranco()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public static void TextoAmarelo()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+        }
         public static void ImprimirLinha()
         {
             for (int i = 0; i < 120; i++)
@@ -221,13 +246,13 @@ namespace KanbanProject.Views.Shared
             }
             Console.WriteLine();
         }
-        public static void TextoAmarelo()
+        public static void TextoAzulEscuro()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
         }
-        public static void TextoBranco()
+        public static void TextoVerdeEscuro()
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
         }
         public static void TextoAmareloEscuro()
         {
@@ -240,22 +265,6 @@ namespace KanbanProject.Views.Shared
         public static void TextoVermelhoEscuro()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-        }
-        public static void TextoVerde()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-        }
-        public static void TextoVerdeEscuro()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-        }
-        public static void TextoAzul()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-        }
-        public static void TextoAzulEscuro()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
         }
     }
 }

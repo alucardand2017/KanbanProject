@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using KanbanProject.Views.Shared;
 namespace KanbanProject.Models.Services
 {
@@ -6,12 +7,9 @@ namespace KanbanProject.Models.Services
     {
         public static void CadastrarProjeto(Cliente cliente)
         {
-            Console.Write("Inserir Nome do Projeto: ");
-            string nomeProjeto = Console.ReadLine();
-            Console.WriteLine("Inserir Descrição do projeto:");
-            string descricao = Console.ReadLine();
-            DateTime dInicio = DateTime.Now;
-            DateTime dFim = DateTime.Now;
+            string nomeProjeto, descricao;
+            DateTime dInicio, dFim;
+            Cadastro(out nomeProjeto, out descricao, out dInicio, out dFim);
             bool flagData = true;
             do
             {
@@ -37,14 +35,20 @@ namespace KanbanProject.Models.Services
             string donoProduto = Console.ReadLine();
             cliente.Projetos.Add(new Projeto(nomeProjeto, descricao, dInicio, dFim, donoProduto));
         }
-        public static void CadastrarProjeto(Projeto projeto)
+        private static void Cadastro(out string nomeProjeto, out string descricao, out DateTime dInicio, out DateTime dFim)
         {
             Console.Write("Inserir Nome do Projeto: ");
-            projeto.NomeProjeto = Console.ReadLine();
+            nomeProjeto = Console.ReadLine();
             Console.WriteLine("Inserir Descrição do projeto:");
-            projeto.Descricao = Console.ReadLine();
-            DateTime dInicio = DateTime.Now;
-            DateTime dFim = DateTime.Now;
+            descricao = Console.ReadLine();
+            dInicio = DateTime.Now;
+            dFim = DateTime.Now;
+        }
+        public static void CadastrarProjeto(Projeto projeto)
+        {
+            string nomeProjeto, descricao;
+            DateTime dInicio, dFim;
+            Cadastro(out nomeProjeto, out descricao, out dInicio, out dFim);
             bool flagData = true;
             do
             {
@@ -134,8 +138,8 @@ namespace KanbanProject.Models.Services
             char cont = '0';
             do
             {
-                Console.WriteLine("Escolha uma opção:  \n(0) - alterar Informações Gerais \n(1) - cadastrar Historia \n(2) - alterar Historia \n(3) - remover Historia \n(4)" +
-                " cadastrar Tarefa \n(5) - alterar Tarefa \n(6) - remover Tarefa \n(7) - sair");
+                Console.WriteLine("Escolha uma opção:\n(0) - alterar Informações Gerais (1) - cadastrar Historia (2) - alterar Historia " +
+                    "(3) - remover Historia \n(4) - cadastrar Tarefa           (5) - alterar Tarefa     (6) - remover Tarefa   (7) - sair");
                 char.TryParse(Console.ReadLine().ToLower(), out cont);
                 switch (cont)
                 {
@@ -166,6 +170,7 @@ namespace KanbanProject.Models.Services
                         break;
                     default:
                         cont = '0';
+                        Console.Clear();
                         Console.WriteLine("Digite uma oção válida!");
                         break;
                 }

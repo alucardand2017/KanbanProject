@@ -10,7 +10,6 @@ namespace KanbanProject.Views.Shared
         {
             Console.Clear();
             TextoBranco();
-            ImprimirLinha();
             TextoVermelhoEscuro();
             Console.Write("|*************************************************| QUADRO KANBAN |****************************************************|");
             Console.WriteLine();
@@ -21,9 +20,7 @@ namespace KanbanProject.Views.Shared
             Console.Write($"|               |                   {cliente.WIPEspec}                   |             {cliente.WIPImple}                 |          {cliente.WIPRev}   |               |");
             Console.WriteLine();
             TextoBranco();
-            ImprimirLinha();
 
-            ImprimirLinha();
         }
         public static void ImprimirCorpo(Projeto projeto)
         {
@@ -173,15 +170,17 @@ namespace KanbanProject.Views.Shared
         public static void ImprimirProjeto(Projeto projeto)
         {
             ImprimeInfo(projeto.NomeProjeto.ToUpper(), projeto.Descricao.ToUpper());
+            Console.WriteLine();
             TextoAmareloEscuro();
             Console.Write("Data:");
             TextoAmarelo();
             Console.Write(projeto.DataInicio);
             TextoAmareloEscuro();
-            Console.Write("-Previsão: ");
+            Console.Write(" - Previsão: ");
             TextoAmarelo();
             Console.WriteLine(projeto.DataFim);
             TextoBranco();
+            ImprimirLinha();
             foreach (var item in projeto.Historias)
             {
                 ImprimeInfo(item.Peso, item.NomeHistoria, item.Descricao);
@@ -190,36 +189,40 @@ namespace KanbanProject.Views.Shared
             {
                 ImprimeInfo(item.Peso, item.NomeTarefa, item.Descricao);
             }
+            TextoBranco();
+            Console.WriteLine();
+            ImprimirLinha();
         }
         public static void ImprimirTelaPrincipal(Cliente cliente, Projeto projeto)
         {
             Console.Clear();
-            Console.SetWindowSize(120, 40);
+            Console.SetWindowSize(120, 30);
             Console.Beep();
             Console.Title = "QUADRO KANBAN";
             ImprimirCabecalho(cliente);
             ImprimirCorpo(projeto);
             ImprimirProjeto(projeto);
+            Console.WriteLine();
             TextoBranco();
         }
         public static void ImprimeInfo(string nome, string descricao)
         {
-            TextoBranco();
-            ImprimirLinha();
-            TextoVerdeEscuro();
-            Console.Write(nome + "  => ");
-            TextoAmarelo();
-            Console.WriteLine(descricao);
+            ImpressaoDadosTH(nome, descricao);
         }
+        private static void ImpressaoDadosTH(string nome, string descricao)
+        {
+            TextoVerdeEscuro();
+            Console.Write(nome + " => ");
+            TextoAmarelo();
+            Console.Write(descricao);
+            Console.Write(" | ");
+        }
+
         public static void ImprimeInfo(decimal peso, string nome, string descricao)
         {
             TextoBranco();
-            ImprimirLinha();
             Console.Write(peso + " => ");
-            TextoVerdeEscuro();
-            Console.Write(nome + "  => ");
-            TextoAmarelo();
-            Console.WriteLine(descricao);
+            ImpressaoDadosTH(nome, descricao);
         }
         //estruturas básicas do layout
         public static void TextoAzul()

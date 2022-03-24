@@ -3,6 +3,8 @@ using KanbanProject.Controller;
 using KanbanProject.Views.Shared;
 using KanbanProject.Models.Repositories;
 using System.IO;
+using KanbanProject.Models;
+using System.Threading;
 
 namespace KanbanProject
 {
@@ -13,19 +15,28 @@ namespace KanbanProject
             try
             {
                 //carregamento
-                string sourceDirectory = @"C:\Temp\DiretorioOrigem";
-                string targetDirectory = @"C:\Temp\DiretorioDestino";
+                string fileName = @"\Data.json";
+                string sourceDirectory = @"A:\ArquivosTemporarios\DiretorioOrigem";
+                string targetDirectory = @"A:\ArquivosTemporarios\DiretorioDestino";
                 DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
                 DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);
-                string newSourceFile = BuscandoDiretorio.Verifica(diSource, diTarget);
+                
+                string newSourceFile = BuscandoDiretorio.Verifica(fileName, diSource, diTarget);
+
                 var cliente = Carregar.CaminhoCarregar(newSourceFile);
                 char rodar;
                 var projeto = cliente.Projetos[cliente.IndexProjetoAtual];
                 
-                
+                //char rodar;
+                //string newSourceFile = @"C:\Temp\DiretorioOrigem";
+                //var projeto = new Projeto();
+                //var cliente = new Cliente();
+                //Salvar.Caminho(cliente, newSourceFile);
+
                 //loop progama principal
                 do
                 {
+                    Console.Clear();
                     Painel.ImprimirTelaPrincipal(cliente, cliente.Projetos[cliente.IndexProjetoAtual]);
                     MenuController.MenuPrincipal(newSourceFile, cliente, cliente.IndexProjetoAtual);
                     //logica para sair do programa
@@ -43,36 +54,24 @@ namespace KanbanProject
             catch (Exception e)
             {
                 Painel.TextoVermelhoPerigo();
-                Console.WriteLine("Aconteceu alguma exceção! - " + e.Message);
+                Console.WriteLine("Aconteceu alguma exceção! - " + e.Message +"\n\n"+ e.StackTrace);
                 Painel.TextoBranco();
             }
         }
         class BuscandoDiretorio
         {
-            public static string Verifica(DirectoryInfo source, DirectoryInfo target)
+            public static string Verifica(string fileName, DirectoryInfo source, DirectoryInfo target)
             {
                 if (source.FullName.ToLower() == target.FullName.ToLower())
                     throw new ArgumentException("caminho de instalação é o mesmo do de origem");
                 // Check if the target directory exists, if not, create it.
-                if (Directory.Exists(target.FullName) == false)
+                if (File.Exists(target.FullName + fileName) == false)                {
                     Directory.CreateDirectory(target.FullName);
-                bool flagTarget = false;
-                foreach (FileInfo fi in target.GetFiles())
-                {
-                    if(fi.FullName == target + @"\Data.json")
-                    {
-                        Console.WriteLine("Arquivo de dados encontrado.");
-                        flagTarget = true;
-                    }
+                    File.Create(target.FullName + fileName).Close();    
                 }
-                if(!flagTarget)
-                {
-                    File.Copy(source + @"\Data.json", target + @"\Data.json");
-                    Console.WriteLine("Criado arquivo Data.Json");
-                }
-                return target + "/Data.json";
+                MenuController.VerificandoBancoDeDados(target.FullName + fileName);
+                return (target.FullName + fileName);
             }
-
         }
     }
 }

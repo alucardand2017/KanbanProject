@@ -11,7 +11,7 @@ namespace KanbanProject.Models.Repositories
             Cliente Json = JsonDesserializar(fullpath);
             return Json;
         }
-        public static Cliente JsonDesserializar(string path)
+        private static Cliente JsonDesserializar(string path)
         {
             string strJson ="";
             try

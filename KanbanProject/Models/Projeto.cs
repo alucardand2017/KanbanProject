@@ -26,11 +26,8 @@ namespace KanbanProject.Models
         public void PrintProjeto()
         {
             Painel.TextoAmareloEscuro();
-            System.Console.WriteLine($"Projeto : " + NomeProjeto);
-            System.Console.WriteLine($"Descrição : " + Descricao);
-            System.Console.WriteLine($"Data inicio : " + DataInicio);
-            System.Console.WriteLine($"Data Final : " + DataFim);
-            System.Console.WriteLine($"Responsável : " + DonoProduto);
+            System.Console.Write($"Projeto : " + NomeProjeto);
+            System.Console.WriteLine($" => Descrição : " + Descricao);
             Painel.TextoBranco();
         }
     

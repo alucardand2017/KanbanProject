@@ -10,6 +10,7 @@ namespace KanbanProject.Models.Services
     {
         public static void CalcKanbanWIP( Cliente cliente)
         {
+            Console.Clear();
             Console.WriteLine("Primeiro, temos que estimar quanto tempo em média uma tarefa vai ficar em cada passo do Quadro Kanban.");
             Console.WriteLine("Digite o Lead Time (LT) de cada posição requeria abaixo.");
             Console.Write("Digite o LT do campo Especificação: ");

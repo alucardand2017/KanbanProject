@@ -9,20 +9,8 @@ namespace KanbanProject.Models.Services
         public static void CadastrarTarefa(Projeto projeto)
         {
             ListaTarefas(projeto);
-            Console.WriteLine($"Nome da Tarefa:");
-            var nomeFatiado = Console.ReadLine().ToCharArray();
-            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
-            Console.WriteLine("Descreva rapidamente a Tarefa:");
-            string descricao = Console.ReadLine();
-            Console.WriteLine("Digite a posição da Tarefa: " +
-                "(1) - Backlog\n" +
-                "(2) - Especificando\n " +
-                "(3) - Especificado\n " +
-                "(4) - Implementando\n " +
-                "(5) - Implementado\n " +
-                "(6) - Revisando\n " +
-                "(7) - Revisado\n");
-            string posicao = "";
+            string nome, descricao, posicao;
+            Cadastro(out nome, out descricao, out posicao);
             bool flagPosicao = true;
             do
             {
@@ -40,22 +28,26 @@ namespace KanbanProject.Models.Services
             decimal peso = decimal.Parse(Console.ReadLine());
             projeto.Tarefas.Add(new Tarefa(nome, descricao, Enum.Parse<PosicaoKanban>(posicao), peso));
         }
-        public static void CadastrarTarefa(Projeto projeto, int index2)
+        private static void Cadastro(out string nome, out string descricao, out string posicao)
         {
             Console.WriteLine($"Nome da Tarefa:");
             var nomeFatiado = Console.ReadLine().ToCharArray();
-            string nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
+            nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();
             Console.WriteLine("Descreva rapidamente a Tarefa:");
-            string descricao = Console.ReadLine();
+            descricao = Console.ReadLine();
             Console.WriteLine("Digite a posição da Tarefa: " +
-               "(1) - Backlog\n" +
-                "(2) - Especificando\n " +
-                "(3) - Especificado\n " +
-                "(4) - Implementando\n " +
-                "(5) - Implementado\n " +
-                "(6) - Revisando\n " +
-                "(7) - Revisado\n");
-            string posicao = "";
+"(3) - Especificado\n " +
+"(4) - Implementando\n " +
+"(5) - Implementado\n " +
+"(6) - Revisando\n " +
+"(7) - Revisado\n");
+            posicao = "";
+        }
+
+        public static void CadastrarTarefa(Projeto projeto, int index2)
+        {
+            string nome, descricao, posicao;
+            Cadastro(out nome, out descricao, out posicao);
             bool flagPosicao = true;
             do
             {

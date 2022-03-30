@@ -138,6 +138,7 @@ namespace KanbanProject.Models.Services
             char cont = '0';
             do
             {
+                Console.Clear();
                 Console.WriteLine("Escolha uma opção:\n(0) - alterar Informações Gerais (1) - cadastrar Historia (2) - alterar Historia " +
                     "(3) - remover Historia \n(4) - cadastrar Tarefa           (5) - alterar Tarefa     (6) - remover Tarefa   (7) - sair");
                 char.TryParse(Console.ReadLine().ToLower(), out cont);

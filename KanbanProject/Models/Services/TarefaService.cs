@@ -30,6 +30,7 @@ namespace KanbanProject.Models.Services
         }
         private static void Cadastro(out string nome, out string descricao, out string posicao)
         {
+            Console.Clear();
             Console.WriteLine($"Nome da Tarefa:");
             var nomeFatiado = Console.ReadLine().ToCharArray();
             nome = nomeFatiado[0].ToString() + nomeFatiado[1].ToString();

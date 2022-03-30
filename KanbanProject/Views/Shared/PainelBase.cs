@@ -20,7 +20,6 @@ namespace KanbanProject.Views.Shared
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         }
-        //estruturas básicas do layout
         public static void TextoAzul()
         {
             Console.ForegroundColor = ConsoleColor.Blue;

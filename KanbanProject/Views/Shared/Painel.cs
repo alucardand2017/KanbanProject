@@ -196,7 +196,7 @@ namespace KanbanProject.Views.Shared
         public static void ImprimirTelaPrincipal(Cliente cliente, Projeto projeto)
         {
             Console.Clear();
-            Console.SetWindowSize(120, 30);
+            Console.SetWindowSize(120, 25 );
             Console.Beep();
             Console.Title = "QUADRO KANBAN";
             ImprimirCabecalho(cliente);

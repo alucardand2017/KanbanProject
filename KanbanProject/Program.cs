@@ -16,24 +16,12 @@ namespace KanbanProject
             {
                 //carregamento
                 string fileName = @"\Data.json";
-                string sourceDirectory = @"A:\ArquivosTemporarios\DiretorioOrigem";
-                string targetDirectory = @"A:\ArquivosTemporarios\DiretorioDestino";
-                DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
-                DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);
-                
-                string newSourceFile = BuscandoDiretorio.Verifica(fileName, diSource, diTarget);
-
+                string targetDirectory = @"D:\ANDERSON\EstudoCSharp\Kanban\KanbanProject\KanbanProject\DiretorioOrigem";
+                DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);             
+                string newSourceFile = BuscandoDiretorio.Verifica(fileName, diTarget);
                 var cliente = Carregar.CaminhoCarregar(newSourceFile);
                 char rodar;
                 var projeto = cliente.Projetos[cliente.IndexProjetoAtual];
-                
-                //char rodar;
-                //string newSourceFile = @"C:\Temp\DiretorioOrigem";
-                //var projeto = new Projeto();
-                //var cliente = new Cliente();
-                //Salvar.Caminho(cliente, newSourceFile);
-
-                //loop progama principal
                 do
                 {
                     Console.Clear();
@@ -60,10 +48,9 @@ namespace KanbanProject
         }
         class BuscandoDiretorio
         {
-            public static string Verifica(string fileName, DirectoryInfo source, DirectoryInfo target)
+            public static string Verifica(string fileName,  DirectoryInfo target)
             {
-                if (source.FullName.ToLower() == target.FullName.ToLower())
-                    throw new ArgumentException("caminho de instalação é o mesmo do de origem");
+                
                 // Check if the target directory exists, if not, create it.
                 if (File.Exists(target.FullName + fileName) == false)                {
                     Directory.CreateDirectory(target.FullName);

@@ -32,4 +32,4 @@ O Quadro possui diversas funcionalidades, dentre elas:
    - Define a quantidade de dias úteis no período.
   
   
-  Projeto totalmente autoral, sendo de média complexidade e execução no momento de sua execução.
+  Projeto totalmente autoral, sendo de média complexidade de execução, de início.

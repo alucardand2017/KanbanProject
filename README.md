@@ -4,7 +4,7 @@ Um Quadro Kanban montado no Console em C#.
 
 ![image](https://user-images.githubusercontent.com/39005073/215300375-515a3cf8-ed1b-4568-8cf4-20991a40bc58.png)
 
-O Quadro possui algumas diversas funcionalidades, dentre elas:
+O Quadro possui diversas funcionalidades, dentre elas:
 
  - Cadastrar um projeto
   - Nome
